@@ -3,9 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>encriptador</title>
+    <title>Encriptador de Texto</title>
+    <link rel="stylesheet" href="styles/styles.css">
 </head>
 <body>
-    
+    <header class="header__gen">
+        <h1 class="header__gen__label">Encriptador de Texto</h1>
+    </header>
+
+    <main class="encrypt">
+        <!-- Sección de Entrada -->
+        <section class="encrypt__section1">
+            <textarea id="texto-entrada" class="encrypt__section1__textoEntrada" placeholder="Ingrese el texto aquí"></textarea>
+            <!-- Contenedor de los botones de encriptar y desencriptar -->
+            <div class="encrypt__section1__buttons-container">
+                <button id="encriptar-btn" class="encrypt__button">Encriptar</button>
+                <button id="desencriptar-btn" class="encrypt__button">Desencriptar</button>
+            </div>
+        </section>
+
+        <!-- Sección de Salida -->
+        <section class="encrypt__section2">
+            <textarea id="texto-salida" class="encrypt__section2__textoSalida" readonly></textarea>
+            <div class="encrypt__section2__buttons-container">
+                <button id="copiar-btn" class="encrypt__section2__button__copy">Copiar</button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>Desarrollado por Jhonatan Herrera, 2024</p>
+    </footer>
+
+    <!-- Referencia al archivo JS -->
+    <script src="script.js"></script>
 </body>
 </html>

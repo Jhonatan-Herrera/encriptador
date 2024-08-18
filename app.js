@@ -1,1 +1,0 @@
-// Aquí va la funcionalidad del proyecto Encriptador
