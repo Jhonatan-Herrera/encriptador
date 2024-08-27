@@ -3,25 +3,39 @@
 
 /* Variables de CSS */
 :root {
+    /* Tipografía */
     --font-family: 'Inter', sans-serif;
-    --color-background: #ffffff;
+    
+    /* Colores */
+    --color-background: #e5e5e5;
     --color-primary: #0A3871;
     --color-secondary: #495057;
     --color-placeholder: #0A3871;
-    --color-placeholder-bg: #e9e9e9;
+    --color-placeholder-bg: #ffffff;
     --border-color: #ccc;
+    
+    /* Tamaños de fuente */
     --font-size-large: 32px;
+    --font-size-medium: 24px;
     --font-size-small: 16px;
+    
+    /* Line-height */
     --line-height-large: 48px;
+    
+    /* Botones */
     --button-width: 328px;
+    --button-width2: 258px;
     --button-height: 67px;
     --button-padding: 10px 20px;
     --button-border-radius: 24px; /* Redondea las esquinas de los botones */
-    --button-bg-color: #007bff;
-    --button-text-color: white;
+    --button-border-section2: 32px; /* Redondea las esquinas del textarea en la sección 2 */
+    --button-bg-color: #0A3871;
+    --button-text-color: #ffffff;
     --button-font-size: 18px;
-    --button-hover-bg-color: #0056b3;
+    --button-hover-bg-color: #D8DFE8;
     --button-spacing: 24px; /* Espacio entre los botones */
+    
+    /* Margenes y tamaños */
     --footer-height: 50px; /* Ajustar según el tamaño real del footer */
     --buttons-bottom-margin: 72px; /* Espacio desde los botones hasta el footer */
 }
@@ -73,7 +87,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between; /* Alinea el contenido y los botones en la parte inferior */
-    height: calc(100vh - var(--buttons-bottom-margin) - var(--footer-height) - 85.9px); /* Asegura que la sección ocupe la altura disponible menos el margen para el footer */
+    height: calc(100vh - var(--buttons-bottom-margin) - var(--footer-height) - 90px); /* Asegura que la sección ocupe la altura disponible menos el margen para el footer */
     padding: 20px;
     box-sizing: border-box;
     margin-top: 128px; /* Alinea la sección a 128px desde la parte superior */
@@ -82,17 +96,79 @@ body {
 .encrypt__section2 {
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Alinea el contenido y los botones en la parte inferior */
+    justify-content: center; /* Centra verticalmente el contenido dentro de la sección */
+    align-items: center; /* Centra horizontalmente el contenido dentro de la sección */
+    width: 400px; /* Ancho fijo del contenedor */
     height: calc(100vh - var(--buttons-bottom-margin) - var(--footer-height)); /* Asegura que la sección ocupe la altura disponible menos el margen para el footer */
     padding: 20px;
     box-sizing: border-box;
     margin-top: 40px; /* Alinea la sección a 40px desde la parte superior */
 }
 
+/* Contenedor que engloba el textarea, el estado vacío y los botones */
+.encrypt__section2__content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    max-width: 100%; /* Asegura que el contenedor no exceda el ancho de la sección */
+}
+
+/* Estilos del textarea */
+.encrypt__section2__textoSalida {
+    width: 100%;
+    height: 100%;
+    padding: 10px; /* Agrega padding para evitar que el texto toque los bordes */
+    border: none;
+    outline: none;    
+    font-family: var(--font-family);
+    color: var(--color-secondary);
+    font-size: var(--font-size-medium);
+    box-sizing: border-box;
+    border-radius: var(--button-border-section2); /* Redondeo de las esquinas */
+    background-color: var(--color-placeholder-bg);
+    overflow: auto; /* Agrega scroll si el contenido es mayor que el contenedor */
+}
+
+/* Estilos del estado vacío */
+.encrypt__section2__empty-state {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 2;
+    display: none; /* Ocultar por defecto */
+}
+
+/* Mostrar el estado vacío cuando el textarea esté vacío */
+.encrypt__section2__textoSalida:empty ~ .encrypt__section2__empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Estilos de la imagen y los textos dentro del estado vacío */
+.empty-state__image {
+    max-width: 240px;
+    margin-bottom: 20px;
+}
+
+.empty-state__text, .empty-state__instruction {
+    margin: 0;
+    font-size: var(--font-size-medium);
+    font-weight: 600; /* Aplicar negrita */
+    color: var(--color-secondary); /* Color actualizado para consistencia */
+}
+
+.empty-state__instruction {
+    font-size: var(--font-size-small);
+    padding-top: 20px;
+}
+
 /* Estilos de la primera sección */
 .encrypt__section1__textoEntrada {
     width: 100%;
-    height: 200px;
+    height: 100%;
     padding: 0;
     border: none;
     outline: none;
@@ -101,30 +177,13 @@ body {
     font-size: var(--font-size-large);
     margin-bottom: 10px;
     box-sizing: border-box;
+    background-color: var(--color-background);
 }
 
 .encrypt__section1__textoEntrada::placeholder {
     font-family: var(--font-family);
     color: var(--color-placeholder);
     font-size: var(--font-size-large);
-}
-
-/* Estilos de la segunda sección */
-.encrypt__section2__textoSalida {
-    width: 100%;
-    height: 200px;
-    padding: 0;
-    border: none;
-    outline: none;    
-    font-family: var(--font-family);
-    color: var(--color-secondary);
-    font-size: var(--font-size-small);
-    margin-bottom: 10px;
-    box-sizing: border-box;
-}
-
-.encrypt__section2__textoSalida[readonly] {
-    background-color: var(--color-placeholder-bg);
 }
 
 /* Contenedor para los botones en la sección 1 */
@@ -142,7 +201,7 @@ body {
     flex-direction: row;
     justify-content: center;
     gap: var(--button-spacing); /* Espacio entre los botones */
-    margin-top: auto; /* Empuja el contenedor de los botones hacia abajo */
+    margin-top: 20px; /* Espacio entre el textarea y el botón */
 }
 
 /* Estilos para los botones */
@@ -151,69 +210,66 @@ body {
     height: var(--button-height);
     padding: var(--button-padding);
     margin: 0; /* Remover márgenes para que los botones estén en línea */
-    border: none;
-    border-radius: var(--button-border-radius);
     background-color: var(--button-bg-color);
     color: var(--button-text-color);
+    border: none;
+    border-radius: var(--button-border-radius); /* Aplica el redondeo en los bordes */
     font-size: var(--button-font-size);
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, border 0.3s ease; /* Agrega transición para el borde */
 }
 
-/* Estilo para el hover de los botones */
-.encrypt__button:hover, .encrypt__button__copy:hover {
+.encrypt__button:hover {
     background-color: var(--button-hover-bg-color);
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary); /* Borde añadido en hover */
 }
 
-/* Estilo para el foco de los botones */
-.encrypt__button:focus, .encrypt__button__copy:focus {
-    outline: none;
-}
-
-/* Estilo para el botón copiar */
+/* Botón de copiar en la sección 2 */
 .encrypt__section2__button__copy {
-    width: var(--button-width);
+    width: var(--button-width2);
     height: var(--button-height);
-    border: none;
-    border-radius: var(--button-border-radius);
+    padding: var(--button-padding);
+    margin: 0;
     background-color: var(--button-bg-color);
     color: var(--button-text-color);
+    border: none;
+    border-radius: var(--button-border-radius);
     font-size: var(--button-font-size);
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, border 0.3s ease; /* Agrega transición para el borde */
+    display: none; /* Ocultar por defecto */
+    position: absolute; /* Asegura que se posicione correctamente */
+    bottom: 3px; /* Ajusta la posición vertical del botón */
 }
 
-/* Media queries para diseño responsive */
-@media (max-width: 768px) {
-    .encrypt {
-        flex-direction: column;
-        padding: 40px 10px;
-        width: 100%;
-    }
-
-    .encrypt__section1, .encrypt__section2 {
-        width: 100%;
-        height: auto;
-    }
-
-    .encrypt__section1__textoEntrada, .encrypt__section2__textoSalida {
-        font-size: 14px;
-    }
+/* Mostrar el botón de copiar cuando hay contenido en el textarea */
+.encrypt__section2__textoSalida:not(:empty) ~ .encrypt__section2__buttons-container .encrypt__section2__button__copy {
+    display: block;
 }
 
-/* Footer */
-footer {
-    text-align: center;
-    padding: 10px;
+.encrypt__section2__button__copy:hover {
+    background-color: var(--button-hover-bg-color);
     color: var(--color-primary);
-    width: 100%;
-    box-sizing: border-box;
-    position: relative;
-    bottom: 0;
-    left: 0;
+    border: 2px solid var(--color-primary); /* Borde añadido en hover */
 }
 
-/* Cursor Animation */
-button:active {
-    transform: scale(0.95);
+/* Estilos del footer */
+.footer__creador {
+    width: 100%;
+    height: var(--footer-height);
+    background-color: none;
+    color: var(--color-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    margin-top: auto; /* Mantiene el footer en la parte inferior */
+}
+
+.footer__creador p {
+    margin: 0;
+    font-size: var(--font-size-small);
 }

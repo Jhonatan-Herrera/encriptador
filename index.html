@@ -24,15 +24,24 @@
 
         <!-- Sección de Salida -->
         <section class="encrypt__section2">
-            <textarea id="texto-salida" class="encrypt__section2__textoSalida" readonly></textarea>
-            <div class="encrypt__section2__buttons-container">
-                <button id="copiar-btn" class="encrypt__section2__button__copy">Copiar</button>
+            <div class="encrypt__section2__content">
+                <textarea id="texto-salida" class="encrypt__section2__textoSalida" readonly></textarea>
+                <!-- Estado vacío -->
+                <div class="encrypt__section2__empty-state">
+                    <img src="assets/image.png" alt="No Message" class="empty-state__image">
+                    <p class="empty-state__text">Ningún mensaje fue encontrado</p>
+                    <p class="empty-state__instruction">Ingresa el texto que deseas encriptar o desencriptar</p>
+                </div>
+                <!-- Botón de copiar -->
+                <div class="encrypt__section2__buttons-container">
+                    <button id="copiar-btn" class="encrypt__section2__button__copy">Copiar</button>
+                </div>
             </div>
         </section>
     </main>
 
     <!-- Footer -->
-    <footer>
+    <footer class="footer__creador">
         <p>Desarrollado por Jhonatan Herrera, 2024</p>
     </footer>
 
